@@ -47,7 +47,7 @@ describe("Pruebas de tags", () => {
     cy.screenshot("P013-Paso3-ClickEnEliminarEtiqueta");
 
     // And Hago click en el botón de confirmar eliminar
-    cy.get("button.gh-btn-red").contains("Delete").click({ force: true });
+    cy.get("div.modal-footer button.gh-btn-red").contains("Delete").click();
     cy.screenshot("P013-Paso4-ClickEnEliminar");
 
     // Then No debe existir la etiqueta

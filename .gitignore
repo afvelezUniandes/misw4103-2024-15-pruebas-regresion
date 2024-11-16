@@ -7,7 +7,6 @@ cypress/downloads/
 # Ignorar archivos y directorios generados por Kraken
 reports/
 logs/
-screenshots/
 videos/
 .kraken/
 
