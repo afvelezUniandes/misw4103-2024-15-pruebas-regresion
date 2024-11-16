@@ -1,5 +1,4 @@
 # Ignorar archivos y directorios generados por Cypress
-cypress/screenshots/
 cypress/videos/
 cypress/reports/
 cypress/logs/

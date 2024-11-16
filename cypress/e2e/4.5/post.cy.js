@@ -16,7 +16,7 @@ describe("Pruebas de post", () => {
     cy.screenshot("P004-Paso2-LlenarTitulo");
 
     // And doy click en el botón de publicar
-    cy.get('div[data-ebd-id="ember1885-trigger"]').contains("Publish").click();
+    cy.get("div.gh-publishmenu-trigger").contains("Publish").click();
     cy.screenshot("P004-Paso3-ClickEnPublicar");
 
     // And doy click en el botón de publicar ahora
@@ -38,15 +38,17 @@ describe("Pruebas de post", () => {
     cy.screenshot("P006-Paso2-ClickEnPost");
 
     // And Hago click en el botón de opciones
-    cy.get("button[data-test-psm-trigger]").click();
+    cy.get('button[title="Settings"]').click();
     cy.screenshot("P006-Paso3-ClickEnOpciones");
 
     // And Hago click en el botón de eliminar
-    cy.get('button[data-test-button="delete-post"]').click();
+    cy.get("button.settings-menu-delete-button")
+      .contains("Delete post")
+      .click();
     cy.screenshot("P006-Paso4-ClickEnEliminar");
 
     // And Hago click en el botón de confirmar
-    cy.get('button[data-test-button="delete-post-confirm"]').click();
+    cy.get("button.gh-btn-red").contains("Delete").click();
     cy.screenshot("P006-Paso5-ClickEnConfirmar");
 
     // Then No debe existitir el post
