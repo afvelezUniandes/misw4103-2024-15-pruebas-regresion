@@ -91,3 +91,20 @@ Then(/^the post "([^"]*)" should be present in the post schedule list$/, async f
         throw new Error(`El post "${postName}" no está presente en la lista de programados.`);
     }
 });
+
+Then(/^I should see the preview title "([^"]*)"$/, async function (expectedTitle) {
+    if (!paginaPosts) paginaPosts = new PaginaPosts(this.driver);
+    const resultado = await paginaPosts.verificarPreviewTitulo(expectedTitle);
+    if (!resultado) {
+        throw new Error(`No se pudo verificar el título del preview "${expectedTitle}"`);
+    }
+});
+
+Then(/^the post "([^"]*)" should not be present in the post list$/, async function (postName) {
+    if (!paginaPosts) paginaPosts = new PaginaPosts(this.driver);
+    const noExiste = await paginaPosts.verificarPostNoExiste(postName);
+    if (!noExiste) {
+        throw new Error(`El post "${postName}" todavía está presente en la lista cuando debería haber sido eliminado.`);
+    }
+    return true;
+});

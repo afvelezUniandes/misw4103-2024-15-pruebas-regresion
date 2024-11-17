@@ -43,8 +43,20 @@ class PaginaPosts {
             case "programar para publicar luego":
                 selector = '.gh-publish-schedule .gh-radio:last-child';
                 break;
-            case "Update":
-                selector = '[data-test-button="publish-save"]';
+            case "Ver preview post":
+                selector = '[data-test-button="publish-preview"]';
+                break;
+            case "opciones posts":
+                selector = '.settings-menu-toggle';
+                break;
+            case "eliminar post modal": 
+                selector = '[data-test-button="delete-post"]';
+                break;
+            case "eliminar post": 
+                selector = '[data-test-button="delete-post-confirm"]';
+                break;
+            case "obtener primer draft":
+                selector = '.gh-post-list-plain-status:has(.draft) a.gh-list-data.gh-post-list-title';
                 break;
             default:
                 throw new Error(`Tipo de botón no soportado: ${tipo}`);
@@ -77,6 +89,18 @@ class PaginaPosts {
         return false;
     }
 
+    async verificarPostNoExiste(postName) {
+        await this.driver.pause(1000);
+        const posts = await this.driver.$$('.gh-content-entry-title');
+        for (const post of posts) {
+            const titleText = await post.getText();
+            if (titleText.trim() === postName) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     async verificarPostEnListaProgramados(postName) {
         await this.driver.pause(2000);
         const posts = await this.driver.$$('.gh-posts-list-item-group .gh-content-entry-title');
@@ -87,6 +111,22 @@ class PaginaPosts {
             }
         }
         return false;
+    }
+
+    async verificarPreviewTitulo(expectedTitle) {
+        await this.driver.pause(2000);
+        const iframe = await this.driver.$('.gh-pe-iframe');
+        await this.driver.switchToFrame(iframe);
+        try {
+            const titleElement = await this.driver.$('h1.gh-article-title.is-title');
+            const actualTitle = await titleElement.getText();
+            if (actualTitle !== expectedTitle) {
+                throw new Error(`El título en el preview "${actualTitle}" no coincide con el esperado "${expectedTitle}"`);
+            }
+            return true;
+        } finally {
+            await this.driver.switchToParentFrame();
+        }
     }
 }
 
