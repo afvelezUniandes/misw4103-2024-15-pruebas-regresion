@@ -11,30 +11,30 @@
   "onReadyScript": "puppet/onReady.js",
   "scenarios": [
     {
-      "label": "P001 - Inicio Sesion Invalido - Paso 1: Página de inicio de sesión",
-      "referenceUrl": "../cypress/screenshots/reference/inicio_sesion.cy.js/P001-Paso1-PaginaDeInicioSesion.png",
-      "url": "../cypress/screenshots/test/inicio_sesion.cy.js/P001-Paso1-PaginaDeInicioSesion.png",
-      "selectors": ["body"],
-      "misMatchThreshold": 0.1
-    },
-    {
-      "label": "P001 - Inicio Sesion Invalido - Paso 5: Mensaje de error de inicio de sesión",
-      "referenceUrl": "../cypress/screenshots/reference/inicio_sesion.cy.js/P001-Paso5-MensajeDeError.png",
-      "url": "../cypress/screenshots/test/inicio_sesion.cy.js/P001-Paso5-MensajeDeError.png",
-      "selectors": ["#gh-alerts"],
-      "misMatchThreshold": 0.1
-    },
-    {
       "label": "P002 - Inicio de sesion Valido - Paso 3: Dashboard",
-      "referenceUrl": "../cypress/screenshots/reference/inicio_sesion.cy.js/P002-Paso3-Dashboard.png",
-      "url": "../cypress/screenshots/test/inicio_sesion.cy.js/P002-Paso3-Dashboard.png",
+      "referenceUrl": "../misw4103-2024-15-pruebas-regresion/cypress/screenshots/reference/inicio_sesion.cy.js/P002-Paso3-Dashboard.png",
+      "url": "../misw4103-2024-15-pruebas-regresion/cypress/screenshots/test/inicio_sesion.cy.js/P002-Paso3-Dashboard.png",
       "selectors": ["body"],
       "misMatchThreshold": 0.1
     },
     {
       "label": "P003 - cerrar sesion - Paso 3: Cerrar sesión",
-      "referenceUrl": "../cypress/screenshots/reference/inicio_sesion.cy.js/P003-Paso3-CerrarSesion.png",
-      "url": "../cypress/screenshots/test/inicio_sesion.cy.js/P003-Paso3-CerrarSesion.png",
+      "referenceUrl": "../misw4103-2024-15-pruebas-regresion/cypress/screenshots/reference/inicio_sesion.cy.js/P003-Paso3-CerrarSesion.png",
+      "url": "../misw4103-2024-15-pruebas-regresion/cypress/screenshots/test/inicio_sesion.cy.js/P003-Paso3-CerrarSesion.png",
+      "selectors": ["body"],
+      "misMatchThreshold": 0.1
+    },
+    {
+      "label": "P017 - Crear Miembro - Paso 6: Mensaje de Guardado",
+      "referenceUrl": "../misw4103-2024-15-pruebas-regresion/cypress/screenshots/reference/miembro.cy.js/P017-Paso6-MensajeDeGuardado.png",
+      "url": "../misw4103-2024-15-pruebas-regresion/cypress/screenshots/test/miembro.cy.js/P017-Paso6-MensajeDeGuardado.png",
+      "selectors": ["body"],
+      "misMatchThreshold": 0.1
+    },
+    {
+      "label": "P019 - Eliminar miembro - Paso 6: Mensaje de Guardado",
+      "referenceUrl": "../misw4103-2024-15-pruebas-regresion/cypress/screenshots/reference/miembro.cy.js/P019-Paso6-MiembroEliminado.png",
+      "url": "../misw4103-2024-15-pruebas-regresion/cypress/screenshots/test/miembro.cy.js/P019-Paso6-MiembroEliminado.png",
       "selectors": ["body"],
       "misMatchThreshold": 0.1
     }

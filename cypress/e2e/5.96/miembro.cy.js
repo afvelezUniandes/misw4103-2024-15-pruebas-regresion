@@ -24,9 +24,13 @@ describe("Pruebas de miembros", () => {
     cy.get("button.gh-btn-primary").click();
     cy.screenshot("P017-Paso5-ClickEnGuardar");
 
+    // And Navego a Miembros
+    cy.visit("/ghost/#/members");
+    cy.screenshot("P017-Paso6-PaginaDeMiembros");
+
     // Then Debo ver mensaje "Saved"
-    cy.contains("Saved");
-    cy.screenshot("P017-Paso6-MensajeDeGuardado");
+    cy.contains("Miembro Prueba");
+    cy.screenshot("P017-Paso7-MensajeDeGuardado");
   });
 
   it("P018 - Editar miembro", () => {
@@ -49,7 +53,6 @@ describe("Pruebas de miembros", () => {
     // Then Debo ver mensaje "Saved"
     cy.contains("Saved");
     cy.screenshot("P018-Paso5-MensajeDeGuardado");
-    ß;
   });
 
   it("P019 - Eliminar miembro", () => {
