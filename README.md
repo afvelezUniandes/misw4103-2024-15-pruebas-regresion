@@ -70,3 +70,52 @@ Luego, ejecuta las pruebas de BackstopJS:
 ```bash
 npx backstop test
 ```
+
+## Kraken
+
+### Configuración
+
+Kraken tiene dos carpetas donde se hicieron las pruebas e2e de la version 5.96 y 4.5, hay dos carpetas. Cada uno tiene sus archivos y configuraciones por separado.
+
+
+### Ejecución de Pruebas
+
+Para ejecutar las pruebas hay que moverse a la carpeta de la version y correr el siguiente comando: 
+
+```bash
+npx kraken-node run
+```
+
+
+### Manejo de Escenarios en Kraken
+
+Debido a la separación de los escenarios de Kraken, debes seguir estos pasos para ejecutar y mover los archivos de features en cada carpeta de kraken según la versión:
+
+1. Ubica los archivos con features que aún no se han ejecutado en la carpeta de kraken-feautres-para-ejecutar y moverlos a la carpeta de kraken/features.
+2. Ejecuta los escenarios de Kraken con el siguiente comando, y ejecutara los escenarios del feature que esta dentro de la carpeta kraken/features.
+3. Una vez que los escenarios se hayan ejecutado, mueve el archio de feature ejecutados a la carpeta kraken-features-ejecutados.
+4. Repite los pasos 1-3 cada vez que quieras ejecutar los escenarios de Kraken.
+
+
+## Resemble
+
+### Ejecución de Pruebas
+
+1. Se debe mover a la carpeta resemble:
+
+```bash
+cd resemble
+```
+
+2. Instalar las dependencias requeridas con el comando:
+
+```bash
+npm install
+```
+
+3. Ejecutar las pruebas con el siguiente comando: 
+
+```bash
+node index.js.
+```
+4. Al terminar la ejecución se generarán las comparaciones de Ghost, en una carpeta de results, que contiene el reporte en un archivo llamado report.html y las imagenes con el resultado de las comparaciones realizadas por resemble.
