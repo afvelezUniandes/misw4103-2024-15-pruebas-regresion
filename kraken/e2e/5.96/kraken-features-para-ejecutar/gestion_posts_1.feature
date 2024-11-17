@@ -19,7 +19,7 @@ Feature: Gestión de Posts - Parte 1
     And I click on the link with text "Publish"
     And I wait for 2 seconds
     And I click on the link with text "Continue, final review"
-    And I click on the link with text "Publish post, right now"
+    And I click on the link with text "Publish post, right now - crear"
     And I navigate to page "<URL_POSTS_PUBLISH>"
     And I wait for 3 seconds
     Then the post "Nuevo post" should be present in the post list

@@ -31,7 +31,13 @@ class PaginaPosts {
             case "Continue, final review":
                 selector = '[data-test-button="continue"]';
                 break;
-            case "Publish post, right now":
+            case "Publish post, right now - crear":
+                selector = '[data-test-button="confirm-publish"]';
+                break;
+            case "Publish post, right now - crear":
+                selector = '[data-test-button="confirm-publish"]';
+                break;
+            case "Publish post, right now - draft publicado":
                 selector = '[data-test-button="confirm-publish"]';
                 break;
             case "Editor":
@@ -41,7 +47,10 @@ class PaginaPosts {
                 selector = '[data-test-setting="publish-at"] button';
                 break;
             case "programar para publicar luego":
-                selector = '.gh-publish-schedule .gh-radio:last-child';
+                selector = '.gh-publish-schedule .gh-radio:last-child';            
+                break;
+            case "Update":
+                selector = '[data-test-button="publish-save"]';
                 break;
             case "Ver preview post":
                 selector = '[data-test-button="publish-preview"]';

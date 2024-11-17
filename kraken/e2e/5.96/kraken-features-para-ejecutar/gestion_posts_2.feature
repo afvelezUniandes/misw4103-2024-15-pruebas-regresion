@@ -40,7 +40,7 @@
     And I click on the link with text "Publish"
     And I wait for 2 seconds
     And I click on the link with text "Continue, final review"
-    And I click on the link with text "Publish post, right now"
+    And I click on the link with text "Publish post, right now - draft publicado"
     And I navigate to page "<URL_POSTS_PUBLISH>"
     And I wait for 3 seconds
     Then the post "Nuevo post draft" should be present in the post list
