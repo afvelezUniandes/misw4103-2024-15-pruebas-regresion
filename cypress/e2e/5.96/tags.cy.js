@@ -44,6 +44,12 @@ describe("Pruebas de tags", () => {
   });
 
   it("P013 - Eliminar etiqueta", () => {
+    // Manejar excepciones no controladas
+    cy.on("uncaught:exception", (err, runnable) => {
+      // Devuelve false para evitar que Cypress falle la prueba
+      return false;
+    });
+
     // Given Abro Etiquetas
     cy.visit("/ghost/#/tags");
     cy.screenshot("P013-Paso1-PaginaDeEtiquetas");

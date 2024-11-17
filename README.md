@@ -52,6 +52,10 @@ GHOST_VERSION="http://localhost:3001" npx cypress run --spec "cypress/e2e/4.5/**
 GHOST_VERSION="http://localhost:2368" npx cypress run --spec "cypress/e2e/5.96/**/*"
 ```
 
+4.  Los screenshot se generarán en la carpeta cypress/screenshots
+    - Para 4.5 la subcarpeta es reference
+    - Para 5.96 la subcarpeta es test
+
 ### Ejecutamos las pruebas de Backstop JS
 
 Si es la primera vez que lo ejecutas o has actualizado las capturas de pantalla de referencia, debes correr el siguiente script para aprobar las nuevas capturas de pantalla de referencia:
