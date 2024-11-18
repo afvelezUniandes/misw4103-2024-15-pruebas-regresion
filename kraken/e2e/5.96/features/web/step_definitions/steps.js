@@ -1,6 +1,9 @@
 const { Given, When, Then } = require("@cucumber/cucumber");
 const PaginaLogin = require('../pages/pagina_login');
 const PaginaPosts = require('../pages/pagina_posts');
+const PaginaTags = require('../pages/pagina_tags');
+const PaginaPages = require('../pages/pagina_pages');
+const PaginaMiembros = require('../pages/pagina_members');
 
 let paginaLogin, paginaPosts;
 
@@ -134,4 +137,107 @@ Then(/^the post "([^"]*)" should not be present in the post list$/, async functi
         throw new Error(`El post "${postName}" todavía está presente en la lista cuando debería haber sido eliminado.`);
     }
     return true;
+});
+
+When('Navego a tags', async function () {
+    if (!paginaTags) paginaTags = new PaginaTags(this.driver);
+    await paginaTags.navegarATags();
+    await this.screenshotService.takeScreenshot('navego_a_tags');
+});
+
+When('Creo un nuevo tag con nombre {kraken-string}, color {kraken-string}, descripción {kraken-string}', async function (nombre, color, descripcion) {
+    if (!paginaTags) paginaTags = new PaginaTags(this.driver);
+    await paginaTags.crearNuevoTag(nombre, color, descripcion);
+    await this.screenshotService.takeScreenshot('creo_nuevo_tag');
+});
+
+When('Elimino el tag con nombre {kraken-string}', async function (nombre) {
+    if (!paginaTags) paginaTags = new PaginaTags(this.driver);
+    await paginaTags.eliminarTag(nombre);
+    await this.screenshotService.takeScreenshot('elimino_tag');
+});
+
+Then('El tag {kraken-string} no debería estar presente en la lista de tags', async function (nombre) {
+    if (!paginaTags) paginaTags = new PaginaTags(this.driver);
+    const noExiste = await paginaTags.verificarTagNoExiste(nombre);
+    if (!noExiste) {
+        throw new Error(`El tag "${nombre}" aún existe en la lista.`);
+    }
+    await this.screenshotService.takeScreenshot('verificar_tag_no_existe');
+});
+
+// Steps de páginas
+
+When('Navego a páginas', async function () {
+    if (!paginaPages) paginaPages = new PaginaPages(this.driver);
+    await paginaPages.navegarAPages();
+    await this.screenshotService.takeScreenshot('navego_a_paginas');
+});
+
+When('Creo una nueva página con título {kraken-string} y contenido {kraken-string}', async function (titulo, contenido) {
+    if (!paginaPages) paginaPages = new PaginaPages(this.driver);
+    await paginaPages.crearNuevaPagina(titulo, contenido);
+    await this.screenshotService.takeScreenshot('creo_nueva_pagina');
+});
+
+Then('La página {kraken-string} debería estar presente en la lista de páginas', async function (titulo) {
+    if (!paginaPages) paginaPages = new PaginaPages(this.driver);
+    const existe = await paginaPages.verificarPaginaEnLista(titulo);
+    if (!existe) {
+        throw new Error(`La página "${titulo}" no está presente en la lista.`);
+    }
+    await this.screenshotService.takeScreenshot('verificar_pagina_presente');
+});
+
+When('Elimino la página con título {kraken-string}', async function (titulo) {
+    if (!paginaPages) paginaPages = new PaginaPages(this.driver);
+    await paginaPages.eliminarPagina(titulo);
+    await this.screenshotService.takeScreenshot('elimino_pagina');
+});
+
+Then('La página {kraken-string} no debería estar presente en la lista de páginas', async function (titulo) {
+    if (!paginaPages) paginaPages = new PaginaPages(this.driver);
+    const noExiste = await paginaPages.verificarPaginaNoExiste(titulo);
+    if (!noExiste) {
+        throw new Error(`La página "${titulo}" aún existe en la lista.`);
+    }
+    await this.screenshotService.takeScreenshot('verificar_pagina_no_existe');
+});
+
+// Steps de miembros
+
+When('Navego a miembros', async function () {
+    if (!paginaMiembros) paginaMiembros = new PaginaMiembros(this.driver);
+    await paginaMiembros.navegarAMiembros();
+    await this.screenshotService.takeScreenshot('navego_a_miembros');
+});
+
+When('Creo un nuevo miembro con nombre {kraken-string}, email {kraken-string}, nota {kraken-string}', async function (nombre, email, nota) {
+    if (!paginaMiembros) paginaMiembros = new PaginaMiembros(this.driver);
+    await paginaMiembros.crearNuevoMiembro(nombre, email, nota);
+    await this.screenshotService.takeScreenshot('creo_nuevo_miembro');
+});
+
+Then('El miembro con email {kraken-string} debería estar presente en la lista de miembros', async function (email) {
+    if (!paginaMiembros) paginaMiembros = new PaginaMiembros(this.driver);
+    const existe = await paginaMiembros.verificarMiembroEnLista(email);
+    if (!existe) {
+        throw new Error(`El miembro con email "${email}" no está presente en la lista.`);
+    }
+    await this.screenshotService.takeScreenshot('verificar_miembro_presente');
+});
+
+When('Elimino el miembro con email {kraken-string}', async function (email) {
+    if (!paginaMiembros) paginaMiembros = new PaginaMiembros(this.driver);
+    await paginaMiembros.eliminarMiembro(email);
+    await this.screenshotService.takeScreenshot('elimino_miembro');
+});
+
+Then('El miembro con email {kraken-string} no debería estar presente en la lista de miembros', async function (email) {
+    if (!paginaMiembros) paginaMiembros = new PaginaMiembros(this.driver);
+    const noExiste = await paginaMiembros.verificarMiembroNoExiste(email);
+    if (!noExiste) {
+        throw new Error(`El miembro con email "${email}" aún existe en la lista.`);
+    }
+    await this.screenshotService.takeScreenshot('verificar_miembro_no_existe');
 });
